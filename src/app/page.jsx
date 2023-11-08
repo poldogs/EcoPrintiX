@@ -10,11 +10,11 @@ export default function Home({ searchParams }) {
 
   return (
     <div className={styles.container}>
-      <Featured />
+      <h1>Homepage</h1>
       <CategoryList />
+      <h2>Join our community</h2>
       <div className={styles.content}>
         <CardList page={page}/>
-        <Menu />
       </div>
     </div>
   );

@@ -2,77 +2,43 @@ import React from 'react'
 import styles from "./categoryList.module.css"
 import Link from 'next/link'
 import Image from 'next/image'
-
+import { GiEcology } from 'react-icons/gi'
+import { FaCar, FaRecycle } from "react-icons/fa6";
+import { MdEnergySavingsLeaf, MdFastfood, MdWaterDrop } from "react-icons/md";
 
 const CategoryList = () => {
   return (
     <div className={styles.container}>
-       <h1 className={styles.title}>Popular Categories</h1>
+       <h1 className={styles.title}>Categories</h1>
        <div className={styles.categories}>
-          <Link href="/blog?cat=style" 
-          className={`${styles.category} ${styles.style}`}>
-             <Image src="/style.png"
-              alt=""
-              height={32}
-              width={32}
-              className={styles.image}
-              /> 
-              Style
+          <Link href="/blog?cat=transportation" 
+          className={`${styles.category} ${styles.transportation}`}>
+             <FaCar fontSize={32}/> Transportation
           </Link>
 
           <Link href={`/blog`} 
-          className={`${styles.category} ${styles.fashion}`}>
-             <Image src="/fashion.png"
-              alt=""
-              height={32}
-              width={32}
-              className={styles.image}
-              />
-              Fashion
+          className={`${styles.category} ${styles.recycling}`}>
+             <FaRecycle fontSize={32}/> Recycling
           </Link>
 
           <Link href={`/blog`} 
           className={`${styles.category} ${styles.food}`}>
-             <Image src="/food.png"
-              alt=""
-              height={32}
-              width={32}
-              className={styles.image}
-              />
-              Food
+             <MdFastfood fontSize={32}/> Food
           </Link>
 
           <Link href={`/blog`} 
-          className={`${styles.category} ${styles.travel}`}>
-             <Image src="/travel.png"
-              alt=""
-              height={32}
-              width={32}
-              className={styles.image}
-              />
-              Travel
+          className={`${styles.category} ${styles.energy}`}>
+             <MdEnergySavingsLeaf fontSize={32}/> Energy used
           </Link>
 
           <Link href={`/blog`} 
-          className={`${styles.category} ${styles.culture}`}>
-             <Image src="/culture.png"
-              alt=""
-              height={32}
-              width={32}
-              className={styles.image}
-              />
-              Culture
+          className={`${styles.category} ${styles.water}`}>
+             <MdWaterDrop fontSize={32}/> Water
           </Link>
 
           <Link href={`/blog`} 
-          className={`${styles.category} ${styles.coding}`}>
-             <Image src="/coding.png"
-              alt=""
-              height={32}
-              width={32}
-              className={styles.image}
-              />
-              Coding
+          className={`${styles.category} ${styles.others}`}>
+             <GiEcology fontSize={32}/> Others
           </Link>
        </div>
     </div>
