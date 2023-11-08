@@ -39,11 +39,11 @@
   width: max-content;
 }
 
-.category.travel {
+.category.energy {
   background-color: #ff7857;
 }
 
-.culture {
+.recycling {
   background-color: #ffb14f;
 }
 
@@ -51,15 +51,15 @@
   background-color: #7fb881;
 }
 
-.fashion {
+.water {
   background-color: #ff7887;
 }
 
-.coding {
+.others {
   background-color: #775aec;
 }
 
-.style {
+.transportation {
   background-color: #789cff;
 }
 

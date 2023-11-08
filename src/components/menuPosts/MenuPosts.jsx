@@ -13,13 +13,13 @@ const MenuPosts = ({ withImage }) => {
           </div>
         )}
         <div className={styles.textContainer}>
-          <span className={`${styles.category} ${styles.travel}`}>Travel</span>
+          <span className={`${styles.category} ${styles.transportation}`}>Transportation</span>
           <h3 className={styles.postTitle}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </h3>
           <div className={styles.detail}>
-            <span className={styles.username}>John Doe</span>
-            <span className={styles.date}> - 10.03.2023</span>
+            <span className={styles.username}>Tester</span>
+            <span className={styles.date}> - 06.11.2023</span>
           </div>
         </div>
       </Link>
@@ -30,15 +30,15 @@ const MenuPosts = ({ withImage }) => {
           </div>
         )}
         <div className={styles.textContainer}>
-          <span className={`${styles.category} ${styles.culture}`}>
-            Culture
+          <span className={`${styles.category} ${styles.energy}`}>
+            Energy used
           </span>
           <h3 className={styles.postTitle}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </h3>
           <div className={styles.detail}>
-            <span className={styles.username}>John Doe</span>
-            <span className={styles.date}> - 10.03.2023</span>
+            <span className={styles.username}>Tester</span>
+            <span className={styles.date}> - 06.11.2023</span>
           </div>
         </div>
       </Link>
@@ -54,8 +54,8 @@ const MenuPosts = ({ withImage }) => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </h3>
           <div className={styles.detail}>
-            <span className={styles.username}>John Doe</span>
-            <span className={styles.date}> - 10.03.2023</span>
+            <span className={styles.username}>Tester</span>
+            <span className={styles.date}> - 06.11.2023</span>
           </div>
         </div>
       </Link>
@@ -66,15 +66,15 @@ const MenuPosts = ({ withImage }) => {
           </div>
         )}
         <div className={styles.textContainer}>
-          <span className={`${styles.category} ${styles.fashion}`}>
-            Fashion
+          <span className={`${styles.category} ${styles.recycling}`}>
+            Recycling
           </span>
           <h3 className={styles.postTitle}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </h3>
           <div className={styles.detail}>
-            <span className={styles.username}>John Doe</span>
-            <span className={styles.date}> - 10.03.2023</span>
+            <span className={styles.username}>Tester</span>
+            <span className={styles.date}> - 06.11.2023</span>
           </div>
         </div>
       </Link>
