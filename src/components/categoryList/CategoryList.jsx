@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from "./categoryList.module.css"
 import Link from 'next/link'
-import Image from 'next/image'
 import { GiEcology } from 'react-icons/gi'
 import { FaCar, FaRecycle } from "react-icons/fa6";
 import { MdEnergySavingsLeaf, MdFastfood, MdWaterDrop } from "react-icons/md";

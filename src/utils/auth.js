@@ -1,8 +1,10 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
+import GithubProvider from "next-auth/providers/github";
 import prisma from "./connect";
 import { getServerSession } from "next-auth";
+
+
 
 export const authOptions = {
   adapter: PrismaAdapter(prisma),
@@ -21,7 +23,7 @@ export const authOptions = {
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
-    }),
+    })
   ],
 };
 

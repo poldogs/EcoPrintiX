@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import styles from "./writePage.module.css";
 import { useEffect, useState } from "react";
 import "react-quill/dist/quill.bubble.css";
@@ -14,6 +13,8 @@ import {
 } from "firebase/storage";
 import { app } from "@/utils/firebase";
 import ReactQuill from "react-quill";
+import { FaImage, FaUpload, FaVideo, FaPlus } from "react-icons/fa";
+
 
 const WritePage = () => {
   const { status } = useSession();
@@ -113,7 +114,7 @@ const WritePage = () => {
       </select>
       <div className={styles.editor}>
         <button className={styles.button} onClick={() => setOpen(!open)}>
-          <Image src="/plus.png" alt="" width={16} height={16} />
+          <FaPlus />
         </button>
         {open && (
           <div className={styles.add}>
@@ -125,14 +126,14 @@ const WritePage = () => {
             />
             <button className={styles.addButton}>
               <label htmlFor="image">
-                <Image src="/image.png" alt="" width={16} height={16} />
+                <FaImage />
               </label>
             </button>
             <button className={styles.addButton}>
-              <Image src="/external.png" alt="" width={16} height={16} />
+              <FaUpload />
             </button>
             <button className={styles.addButton}>
-              <Image src="/video.png" alt="" width={16} height={16} />
+              <FaVideo />
             </button>
           </div>
         )}

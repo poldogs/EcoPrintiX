@@ -26,6 +26,10 @@
   justify-content: center;
 }
 
+.socialButton__icon {
+  margin-right: 10px;
+}
+
 .socialButton:first-child {
   background-color: #ff5555;
 }
@@ -34,9 +38,6 @@
   background-color: #111;
 }
 
-.socialButton:nth-child(3) {
-  background-color: #087bea;
-}
 
 @media screen and (max-width: 768px) {
   .wrapper {
