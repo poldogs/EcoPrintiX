@@ -1,16 +1,15 @@
 import React from "react";
 import styles from "./footer.module.css";
-import Image from "next/image";
 import Link from "next/link";
 import { BsFacebook, BsInstagram, BsTiktok, BsYoutube } from "react-icons/bs";
-import { GiEcology } from "react-icons/gi";
+import { IoFingerPrint } from "react-icons/io5";
 
 const Footer = () => {
   return (
     <div className={styles.container}>
       <div className={styles.info}>
         <div className={styles.logo}>
-          <GiEcology alt="lama blog" fontSize={50}/>
+          <IoFingerPrint color="#00FF00" alt="EcoPrintix" fontSize={50}/>
           <h1 className={styles.logoText}>EcoPrintix</h1>
         </div>
         <p className={styles.desc}>
@@ -20,10 +19,10 @@ const Footer = () => {
           easy for people to take action.
         </p>
         <div className={styles.icons}>
-          <BsFacebook fontSize={18}/>
-          <BsInstagram fontSize={18}/>
-          <BsTiktok fontSize={18}/>
-          <BsYoutube fontSize={18}/>
+          <Link href="/"><BsFacebook fontSize={18}/></Link>
+          <Link href="/"><BsInstagram fontSize={18}/></Link>
+          <Link href="/"><BsTiktok fontSize={18}/></Link>
+          <Link href="/"><BsYoutube fontSize={18}/></Link>
         </div>
       </div>
       <div className={styles.links}>

@@ -52,6 +52,10 @@
   font-weight: bold;
 }
 
+.icons a:hover, .list a:hover{
+  color: #00FF00;
+}
+
 @media screen and (max-width: 1024px) {
   .links {
     gap: 50px;

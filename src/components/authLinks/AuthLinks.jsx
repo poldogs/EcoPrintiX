@@ -20,6 +20,9 @@ const AuthLinks = () => {
           <Link href="/write" className={styles.link}>
             Write
           </Link>
+          <Link href="/eco-tasks" className={styles.link}>
+            EcoTasks
+          </Link>
           <span className={styles.link} onClick={signOut}>
             Logout
           </span>
@@ -39,6 +42,7 @@ const AuthLinks = () => {
           ) : (
             <>
               <Link href="/write">Write</Link>
+              <Link href="/eco-tasks">EcoTasks</Link>
               <span className={styles.link}>Logout</span>
             </>
           )}

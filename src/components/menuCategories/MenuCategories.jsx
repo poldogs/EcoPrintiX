@@ -7,8 +7,7 @@ const MenuCategories = () => {
     <div className={styles.categoryList}>
       <Link
         href="/blog?cat=transportation"
-        className={`${styles.categoryItem} ${styles.transportation}`}
-      >
+        className={`${styles.categoryItem} ${styles.transportation}`}>
         Transportation
       </Link>
       <Link 

@@ -12,6 +12,12 @@
   font-size: 14px;
 }
 
+.categoryItem:hover {
+  box-shadow: 0 0 5px #ccc;
+  transform: scale(1.05);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
 .categoryItem.transportation {
   background-color: #57c4ff31;
 }

@@ -5,18 +5,19 @@ import Link from "next/link";
 import AuthLinks from "../authLinks/AuthLinks";
 import ThemeToggle from "../themeToggle/ThemeToggle";
 import { BsFacebook, BsInstagram, BsTiktok, BsYoutube } from "react-icons/bs";
-import { GiEcology } from "react-icons/gi";
+import { IoFingerPrint } from "react-icons/io5";
+
 
 const Navbar = () => {
   return (
     <div className={styles.container}>
       <div className={styles.social}>
-        <BsFacebook fontSize={24}/>
-        <BsInstagram fontSize={24}/>
-        <BsTiktok fontSize={24}/>
-        <BsYoutube fontSize={24}/>
+      <Link href="/"><BsFacebook fontSize={24}/></Link>
+          <Link href="/"><BsInstagram fontSize={24}/></Link>
+          <Link href="/"><BsTiktok fontSize={24}/></Link>
+          <Link href="/"><BsYoutube fontSize={24}/></Link>
       </div>
-      <div className={styles.logo}><GiEcology/>EcoPrintix</div>
+      <div className={styles.logo}><IoFingerPrint color="#00FF00"/>EcoPrintix</div>
       <div className={styles.links}>
         <ThemeToggle />
         <Link href="/" className={styles.link}>Homepage</Link>

@@ -11,6 +11,10 @@
   flex: 1;
 }
 
+.social a:hover, .links a:hover{
+  color: #00FF00;
+}
+
 .logo {
   flex: 1;
   text-align: center;
