@@ -75,6 +75,18 @@ model Task {
   completedAt DateTime @default(now())
 }
 
+model UserTask {
+  id        String @id @default(cuid()) @map("_id")
+  userId    String
+  taskId    String
+  completed Boolean @default(false)
+
+  user      User   @relation(fields: [userId], references: [id])
+  task      Task   @relation(fields: [taskId], references: [id])
+
+  @@unique([userId, taskId])
+}
+
 model Post {
   id        String    @id @default(cuid()) @map("_id")
   createdAt DateTime  @default(now())
