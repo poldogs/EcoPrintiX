@@ -31,8 +31,12 @@
   cursor: pointer;
 }
 
+.button{
+  color: #00FF00;
+}
+
 .addButton {
-  border-color: #1a8917;
+  border-color: #00FF00;
 }
 
 .add {
@@ -68,8 +72,15 @@
   right: 0px;
   padding: 10px 20px;
   border: none;
-  background-color: #1a8917;
+  background-color: #00e200;
   color: white;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.publish:hover, .addButton:hover{
+  box-shadow: 0 0 5px #ccc;
+  transform: scale(1.05);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }

@@ -21,12 +21,18 @@
 
 .button {
   padding: 16px 20px;
-  background-color: teal;
+  background-color: #00da00;
   color: white;
   font-weight: bold;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
+}
+
+.button:hover {
+  box-shadow: 0 0 5px #ccc;
+  transform: scale(1.05);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .comments{

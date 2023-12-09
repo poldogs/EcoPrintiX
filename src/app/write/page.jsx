@@ -126,14 +126,14 @@ const WritePage = () => {
             />
             <button className={styles.addButton}>
               <label htmlFor="image">
-                <FaImage />
+                <FaImage color="#00ff00"/>
               </label>
             </button>
             <button className={styles.addButton}>
-              <FaUpload />
+              <FaUpload color="#00ff00"/>
             </button>
             <button className={styles.addButton}>
-              <FaVideo />
+              <FaVideo color="#00ff00"/>
             </button>
           </div>
         )}

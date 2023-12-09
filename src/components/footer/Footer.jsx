@@ -34,12 +34,12 @@ const Footer = () => {
         </div>
         <div className={styles.list}>
           <span className={styles.listTitle}>Tags</span>
-          <Link href="/">Transportation</Link>
-          <Link href="/">Recycling</Link>
-          <Link href="/">Food</Link>
-          <Link href="/">Energy used</Link>
-          <Link href="/">Water</Link>
-          <Link href="/">Others</Link>
+          <Link href="/blog?cat=transportation">Transportation</Link>
+          <Link href="/blog?cat=recycling">Recycling</Link>
+          <Link href="/blog?cat=food">Food</Link>
+          <Link href="/blog?cat=energy">Energy used</Link>
+          <Link href="/blog?cat=water">Water</Link>
+          <Link href="/blog?cat=others">Others</Link>
         </div>
         <div className={styles.list}>
           <span className={styles.listTitle}>Social</span>
