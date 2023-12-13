@@ -47,6 +47,7 @@ model User {
   sessions      Session[]
   Post          Post[]
   Comment       Comment[]
+  userTasks     UserTask[]
 }
 
 model VerificationToken {
@@ -71,8 +72,7 @@ model Task {
   title       String
   desc        String
   img         String
-  completed   Boolean
-  completedAt DateTime @default(now())
+  userTasks   UserTask[]
 }
 
 model UserTask {
@@ -80,10 +80,8 @@ model UserTask {
   userId    String
   taskId    String
   completed Boolean @default(false)
-
   user      User   @relation(fields: [userId], references: [id])
   task      Task   @relation(fields: [taskId], references: [id])
-
   @@unique([userId, taskId])
 }
 
