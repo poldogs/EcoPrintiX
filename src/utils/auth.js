@@ -4,14 +4,16 @@ import GithubProvider from "next-auth/providers/github";
 import prisma from "./connect";
 import { getServerSession } from "next-auth";
 
-async function assignTasksToNewUser(userId) {
-  const tasks = await prisma.task.findMany();
-  const userTasks = tasks.map(task => ({
-    userId: userId,
-    taskId: task.id,
-    completed: false
-  }));
-  await prisma.userTask.createMany({ data: userTasks });
+async function assignTasksToUser(userId) {
+  const allTasks = await prisma.task.findMany();
+  for (const task of allTasks) {
+    await prisma.userTask.create({
+      data: {
+        userId: userId,
+        taskId: task.id,
+      },
+    });
+  }
 }
 
 export const authOptions = {
@@ -26,9 +28,11 @@ export const authOptions = {
       clientSecret: process.env.GITHUB_SECRET,
     })
   ],
-  callbacks: {
-    afterCreate: async (user, account, profile) => {
-      await assignTasksToNewUser(user.id);
+  events: {
+    signIn: async (message) => {
+      if (message.isNewUser) {
+        await assignTasksToUser(message.user.id);
+      }
     },
   },
 };

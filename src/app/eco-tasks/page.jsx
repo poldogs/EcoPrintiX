@@ -1,11 +1,12 @@
 import React from 'react'
 import styles from "./ecoTasksPage.module.css"
+import TasksList from '../../components/tasksList/TasksList'
 
-
-const ecoTasksPage = () => {
+const ecoTasksPage = ({ userId }) => {
   return (
     <div>
-      Eco Tasks
+      <h1>Eco Tasks</h1>
+      <TasksList userId={userId} />
     </div>
   )
 }
