@@ -1,50 +1,65 @@
-.container {
-  margin-bottom: 50px;
-  display: flex;
-  align-items: center;
-  gap: 50px;
-}
-
-.imageContainer {
+.iconContainer {
   flex: 1;
-  height: 350px;
-  position: relative;
+  font-size: 2em; /* Ajusta el tamaño del icono */
+  padding: 10px; /* Añade espacio alrededor del icono */
+  text-align: center;
 }
 
-.image {
-  object-fit: cover;
-}
-
-.textContainer {
+.taskTitle {
   flex: 1;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px; /* Añade espacio alrededor del título */
+}
+
+.taskDescription {
+  flex: 2;
+  padding: 10px; /* Añade espacio alrededor de la descripción */
+  font-size: 16px;
+}
+
+.toggleButton {
+  flex: 1;
+  font-size: 0.8em; 
+  padding: 10px; 
+  background: none;
+  border: none;
+  color: grey; 
+}
+
+.toggleButton.completed {
+  color: green; 
+}
+
+.taskContainer {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  justify-content: space-between;
+  border: 1px solid grey;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.date {
-  color: gray;
+.taskContainer.completed {
+  border-color: green; 
+  border-width: 2px; 
 }
 
-.category {
-  color: #00FF00;
-  font-weight: 500;
-}
-
-.desc {
-  font-size: 18px;
-  font-weight: 300;
-  color: var(--softTextColor);
-}
-
-.link {
-  border-bottom: 1px solid #00FF00;
-  width: max-content;
-  padding: 2px 0px;
-}
-
-@media screen and (max-width: 1280px) {
-  .imageContainer {
-    display: none;
+@media (min-width: 600px) {
+  .taskContainer {
+    flex-direction: row;
   }
+}
+
+
+.toggleButton {
+  cursor: pointer;
+  transition: color 0.3s ease;
+  font-size: 2em;
+}
+
+.toggleButton:hover {
+  color: green;
 }

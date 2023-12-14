@@ -1,11 +1,13 @@
 import prisma from "@/utils/connect";
 import { NextResponse } from "next/server";
 import { getAuthSession } from "@/utils/auth";
+import { getSession } from 'next-auth/react';
 
-export default async function handler(req, res) {
-  if (req.method === 'GET') {
+
+export const GET = async (req) => {
     const session = await getAuthSession(req);
-    if (session && session.user) {
+
+    if (session) {
       const userId = session.user.id;
       // Usando el userId obtenido de la sesión para buscar las tareas del usuario en la base de datos
       const userTasks = await prisma.userTask.findMany({
@@ -16,15 +18,34 @@ export default async function handler(req, res) {
           task: true,
         },
       });
-
       // Devolviendo las tareas del usuario como respuesta
       return new NextResponse(JSON.stringify(userTasks), { status: 200 });
     } else {
-      // Si no hay sesión o el usuario de la sesión, devolver un error 401
-      res.status(401).json({ error: 'Not authenticated' });
+      return new NextResponse(JSON.stringify({ error: 'Not authenticated' }), { status: 401 });
     }
-  } else {
-    // Si el método de la solicitud no es GET, devolver un error 405
-    res.status(405).json({ error: 'Method not allowed' });
+}
+
+export async function PUT(req) {
+  try {
+    const { userId } = auth();
+    const { isCompleted, id } = await req.json();
+
+    if (!userId) {
+      return NextResponse.json({ error: "Unauthorized", status: 401 });
+    }
+
+    const task = await prisma.task.update({
+      where: {
+        id,
+      },
+      data: {
+        isCompleted,
+      },
+    });
+
+    return NextResponse.json(task);
+  } catch (error) {
+    console.log("ERROR UPDATING TASK: ", error);
+    return NextResponse.json({ error: "Error deleting task", status: 500 });
   }
 }
