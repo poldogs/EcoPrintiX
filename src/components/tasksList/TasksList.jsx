@@ -6,6 +6,7 @@ import styles from './TasksList.module.css';
 import { GiEcology } from 'react-icons/gi'
 import { FaCar, FaRecycle } from "react-icons/fa6";
 import { MdEnergySavingsLeaf, MdFastfood, MdWaterDrop } from "react-icons/md";
+import TaskCategories from '../taskCategories/TaskCategories';
 
 
 const TasksList = () => {

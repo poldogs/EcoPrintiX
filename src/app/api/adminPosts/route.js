@@ -13,3 +13,17 @@ export const GET = async () => {
     );
   }
 };
+
+export const DELETE = async (req) => {
+  const postId = await req.json();
+
+    try {
+      const post = await prisma.post.delete({
+        where: { id: postId },
+      });
+      return new NextResponse().json(JSON.stringify(post));
+    } catch (error) {
+      return new NextResponse(500).json(JSON.stringify({ error: `Post with ID ${postId} not found` }));
+    }
+
+}

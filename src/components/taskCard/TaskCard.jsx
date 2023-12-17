@@ -21,8 +21,23 @@ const TaskCard = ({ task, userTask }) => {
   
 
   const completeTask = async () => {
-    
-  };
+    try {
+      const response = await fetch(`/api/userTasks/${task.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ completed: true }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error completing task');
+      }
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div className={styles.taskContainer}>

@@ -18,9 +18,21 @@ export const GET = async (req) => {
           task: true,
         },
       });
-      // Devolviendo las tareas del usuario como respuesta
       return new NextResponse(JSON.stringify(userTasks), { status: 200 });
     } else {
       return new NextResponse(JSON.stringify({ error: 'Not authenticated' }), { status: 401 });
     }
 }
+
+/* Ordenar por iconos, pendiente
+export default async function handle(req, res) {
+  const { icon } = req.query;
+
+  const tasks = await prisma.task.findMany({
+    where: {
+      icon: icon,
+    },
+  });
+
+  res.json(tasks);
+}*/

@@ -3,9 +3,6 @@ const nextConfig = {
   images:{
     domains:["lh3.googleusercontent.com","firebasestorage.googleapis.com","avatars.githubusercontent.com"]
   },
-  experimental: {
-    appDir: true,
-  },
 }
 
 module.exports = nextConfig

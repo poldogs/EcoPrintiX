@@ -33,13 +33,14 @@ const AdminPostsPage = () => {
     console.log(postId);
 
     try {
-      const response = await fetch(`/api/adminPosts/${postId}`, {
+      const response = await fetch('/api/adminPosts', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ password: key }),
+        body: JSON.stringify({ id: postId }),
       });
+      console.log(response);
   
       if (response.ok) {
         setPosts(posts.filter(post => post.id !== postId));
