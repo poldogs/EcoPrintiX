@@ -10,7 +10,7 @@ const Footer = () => {
       <div className={styles.info}>
         <div className={styles.logo}>
           <IoFingerPrint color="#00FF00" alt="EcoPrintix" fontSize={50}/>
-          <h1 className={styles.logoText}>EcoPrintix</h1>
+          <h1 className={styles.logoText}>EcoPrintiX</h1>
         </div>
         <p className={styles.desc}>
           EcoPrintix is your gateway to a world of eco-friendly actions, inspiring positive change for our planet.

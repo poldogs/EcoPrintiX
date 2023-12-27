@@ -1,11 +1,12 @@
 "use client"
 import React, { useState } from 'react';
-import axios from 'axios';
-import styles from './adminPostsPage.module.css';
+import styles from './adminPage.module.css';
+import AdminPosts from '../../components/adminPosts/AdminPosts';
+import AdminComments from '../../components/adminComments/AdminComments';
+import AdminUsers from '../../components/adminUsers/AdminUsers';
 
-const AdminPostsPage = () => {
+const AdminPage = () => {
   const [key, setKey] = useState('');
-  const [posts, setPosts] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleKeyChange = (event) => {
@@ -17,40 +18,13 @@ const AdminPostsPage = () => {
     event.preventDefault();
     if (key === 'admin') {
       try {
-        const response = await fetch('/api/adminPosts');
-        if (response.ok) {
-          const posts = await response.json();
-          setPosts(posts);
           setIsAuthenticated(true);
-        }
       } catch (error) {
-        console.error('Error fetching posts:', error);
+        console.error('Error fetching:', error);
       }
     }
   };
 
-  const handleDelete = async (postId) => {
-    console.log(postId);
-
-    try {
-      const response = await fetch('/api/adminPosts', {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id: postId }),
-      });
-      console.log(response);
-  
-      if (response.ok) {
-        setPosts(posts.filter(post => post.id !== postId));
-      } else {
-        console.error('Error deleting post:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error deleting post:', error);
-    }
-  };
 
   return (
     <div>
@@ -68,22 +42,13 @@ const AdminPostsPage = () => {
         </form>
       ) : (
         <div>
-          {posts.map((post) => (
-            <div key={post.id} className={styles.post}>
-              <h2 className={styles.postTitle}>{post.title}</h2>
-              <div
-                className={styles.postContent}
-                dangerouslySetInnerHTML={{ __html: post.desc }}
-              />
-              <button onClick={() => handleDelete(post.id)} className={styles.deleteButton}>
-                Delete
-              </button>
-            </div>
-          ))}
+          <AdminPosts/>
+          <AdminComments/>
+          <AdminUsers/>
         </div>
       )}
     </div>
   );
 };
 
-export default AdminPostsPage;
+export default AdminPage;

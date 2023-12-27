@@ -17,12 +17,11 @@ const Navbar = () => {
           <Link href="/"><BsTiktok fontSize={24}/></Link>
           <Link href="/"><BsYoutube fontSize={24}/></Link>
       </div>
-      <div className={styles.logo}><IoFingerPrint color="#00FF00"/>EcoPrintix</div>
+      <div className={styles.logo}><IoFingerPrint color="#00FF00"/>EcoPrintiX</div>
       <div className={styles.links}>
         <ThemeToggle />
         <Link href="/" className={styles.link}>Homepage</Link>
         <Link href="/blog" className={styles.link}>Blog</Link>
-        <Link href="/about" className={styles.link}>About</Link>
         <AuthLinks />
       </div>
     </div>

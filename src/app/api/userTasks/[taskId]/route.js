@@ -1,33 +1,28 @@
 import { NextResponse } from 'next/server';
 import prisma from "@/utils/connect";
 import { getAuthSession } from "@/utils/auth";
-import bodyParser from 'body-parser';
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
 
-const jsonParser = bodyParser.json();
-
-export async function PUT(req, res) {
-  const taskId = req.query.taskId;
+export const PUT = async (req, { params }) => {
+  const { taskId } = params;
 
   const session = await getAuthSession(req);
   const userId = session.user.id;
 
-  if (req.method === 'PUT') {
-    jsonParser(req, res, async () => { 
-      const { completed } = req.body;
 
-      const result = await prisma.userTask.update({
-        where: { taskId: taskId, userId: userId },
-        data: { completed: true },
-      });
-      return NextResponse.json(result);
+  try {
+    const body = await req.json();
+    const userTask = await prisma.userTask.update({
+      where: { taskId: taskId, userId: userId },
+      data: { completed: 'true' },
     });
-  } else {
-    res.status(405).json({ error: 'Method not allowed' });
+
+    return new NextResponse(JSON.stringify(userTask, { status: 200 }));
+    
+  } catch (err) {
+    console.error('Error processing PUT request:', err);
+    return new NextResponse(
+      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
+    );
   }
-}
+};
