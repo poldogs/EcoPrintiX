@@ -5,13 +5,11 @@ import { MdEnergySavingsLeaf, MdFastfood, MdWaterDrop } from "react-icons/md";
 import styles from './taskCategories.module.css';
 import React, { useState } from 'react';
 
-const TaskCategories = ({ onIconClick }) => {
-    const [selectedIcon, setSelectedIcon] = useState(null);
+const TaskCategories = ({ onFilter }) => {
 
     const handleIconClick = (icon) => {
-        setSelectedIcon(icon);
-        onIconClick(icon); // Propagamos el evento al componente padre
-    } 
+        onFilter(icon);
+      };
 
     return (
         <div className={styles.categories}>

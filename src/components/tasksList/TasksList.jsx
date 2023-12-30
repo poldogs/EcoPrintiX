@@ -11,6 +11,7 @@ import TaskCategories from '../taskCategories/TaskCategories';
 
 const TasksList = () => {
   const [tasks, setTasks] = useState([]);
+  const [filteredTasks, setFilteredTasks] = useState([]);
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -18,15 +19,26 @@ const TasksList = () => {
       fetch('/api/userTasks')
         .then(response => response.json())
         .then(data => {
-          setTasks(data); // Actualizando el estado tasks con las tareas del usuario
+          setTasks(data);
+          setFilteredTasks(data);
         });
     }
   }, [session]);
 
+  const handleFilter = (icon) => {
+    if (icon) {
+      const newFilteredTasks = tasks.filter(task => task.task.icon === icon);
+      setFilteredTasks(newFilteredTasks);
+    } else {
+      setFilteredTasks(tasks); 
+    }
+  };
+
   return (
     <div className={styles.list}>
-      {tasks.map((task) => (
-        <TaskCard key={task.id} task={task.task} />
+      <TaskCategories onFilter={handleFilter} />
+      {filteredTasks.map((task) => (
+        <TaskCard key={task.id} task={task.task} userTask={task}/>
       ))}
     </div>
   );

@@ -4,7 +4,6 @@ import { GiEcology } from 'react-icons/gi'
 import { FaCar, FaRecycle, FaRegCircleCheck } from "react-icons/fa6";
 import { MdEnergySavingsLeaf, MdFastfood, MdWaterDrop } from "react-icons/md";
 import { useSession } from "next-auth/react";
-import prisma from '../../utils/connect';
 
 
 const ICONS = {
@@ -17,37 +16,43 @@ const ICONS = {
 };
 
 const TaskCard = ({ task, userTask }) => {
+  const [isCompleted, setIsCompleted] = useState(userTask.completed);
   const Icon = ICONS[task.icon];
-  
+  const { status } = useSession();
 
-  const completeTask = async () => {
+  const completeTask = async (id) => {
+  if (status === 'authenticated') {
     try {
-      const taskId = task.id;
-      const response = await fetch(`/api/userTasks/${taskId}`, {
-        method: 'PUT',
-        body: JSON.stringify({ completed: true }),
-      });
-      console.log(response);
+      const res = await fetch(`/api/userTasks/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ completed: !isCompleted }),
+      })
   
-      if (!response.ok) {
-        throw new Error('Error completing task');
+      if (res.ok) {
+        setIsCompleted(!isCompleted);
       }
-  
-    } catch (error) {
-      console.error(error);
+      console.log(isCompleted + " " + userTask.id)
+    } catch (err) {
+      console.log(err)
     }
+  } else {
+    console.log('Not authenticated');
   }
+};
 
   return (
-    <div className={styles.taskContainer}>
+    <div className={`${styles.taskContainer} ${isCompleted ? styles.completed : ''}`}>
       <div className={styles.iconContainer}>
       <Icon />
       </div>
       <h2 className={styles.taskTitle}>{task.title}</h2>
       <p className={styles.taskDescription}>{task.desc}</p>
       <button 
-        className={`${styles.toggleButton} ${userTask && userTask.completed ? styles.completed : ''}`}
-        onClick={() => completeTask()}
+        className={`${styles.toggleButton} ${isCompleted ? styles.completed : ''}`}
+        onClick={() => completeTask(userTask.id)}
       >
         <FaRegCircleCheck  />
       </button>

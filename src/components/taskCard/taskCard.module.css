@@ -28,7 +28,7 @@
 }
 
 .toggleButton.completed {
-  color: green; 
+  color: #00ff00; 
 }
 
 .taskContainer {
@@ -43,7 +43,7 @@
 }
 
 .taskContainer.completed {
-  border-color: green; 
+  border-color: #00ff00; 
   border-width: 2px; 
 }
 
@@ -61,5 +61,5 @@
 }
 
 .toggleButton:hover {
-  color: green;
+  color: #00ff00;
 }
