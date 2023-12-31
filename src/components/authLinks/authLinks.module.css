@@ -2,6 +2,18 @@
   cursor: pointer;
 }
 
+.link:hover {
+  color: #00ff00;
+}
+
+.logout {
+  cursor: pointer;
+}
+
+.logout:hover {
+  color: #00ff00;
+}
+
 .burger {
   width: 20px;
   height: 16px;
@@ -41,4 +53,6 @@
   .link{
     display: none;
   }
+
+
 }

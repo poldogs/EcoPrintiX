@@ -3,10 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useSession } from "next-auth/react";
 import TaskCard from '../taskCard/TaskCard';
 import styles from './TasksList.module.css';
-import { GiEcology } from 'react-icons/gi'
-import { FaCar, FaRecycle } from "react-icons/fa6";
-import { MdEnergySavingsLeaf, MdFastfood, MdWaterDrop } from "react-icons/md";
 import TaskCategories from '../taskCategories/TaskCategories';
+import ProgressBar from '../progressBar/ProgressBar';
 
 
 const TasksList = () => {
@@ -34,11 +32,16 @@ const TasksList = () => {
     }
   };
 
+  const completedTasks = filteredTasks.filter(task => task.completed).length;
+
   return (
     <div className={styles.list}>
       <TaskCategories onFilter={handleFilter} />
+
+      <ProgressBar completedTasks={completedTasks} totalTasks={filteredTasks.length} />
+
       {filteredTasks.map((task) => (
-        <TaskCard key={task.id} task={task.task} userTask={task}/>
+        <TaskCard key={task.id} task={task.task} userTask={task} />
       ))}
     </div>
   );

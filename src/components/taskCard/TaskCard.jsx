@@ -32,9 +32,11 @@ const TaskCard = ({ task, userTask }) => {
       })
   
       if (res.ok) {
-        setIsCompleted(!isCompleted);
+        const updatedTask = await res.json();
+        setIsCompleted(updatedTask.completed);
+        updateTask(updatedTask);
       }
-      console.log(isCompleted + " " + userTask.id)
+      
     } catch (err) {
       console.log(err)
     }

@@ -36,14 +36,16 @@ const AuthLinks = () => {
       {open && (
         <div className={styles.responsiveMenu}>
           <Link href="/">Homepage</Link>
-          <Link href="/">About</Link>
-          {status === "notauthenticated" ? (
+          <Link href="/blog">Blog</Link>
+          {status === "unauthenticated" ? (
             <Link href="/login">Login</Link>
           ) : (
             <>
               <Link href="/write">Write</Link>
               <Link href="/eco-tasks">EcoTasks</Link>
-              <span className={styles.link}>Logout</span>
+              <span className={styles.logout} onClick={signOut}>
+                Logout
+              </span>
             </>
           )}
         </div>
