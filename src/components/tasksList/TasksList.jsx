@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSession } from "next-auth/react";
 import TaskCard from '../taskCard/TaskCard';
-import styles from './TasksList.module.css';
+import styles from './tasksList.module.css';
 import TaskCategories from '../taskCategories/TaskCategories';
 import ProgressBar from '../progressBar/ProgressBar';
 
