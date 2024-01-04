@@ -23,6 +23,7 @@ const TasksList = () => {
     }
   }, [session]);
 
+
   const handleFilter = (icon) => {
     if (icon) {
       const newFilteredTasks = tasks.filter(task => task.task.icon === icon);
