@@ -12,13 +12,14 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { app } from "@/utils/firebase";
-import ReactQuill from "react-quill";
 import { FaImage, FaUpload, FaVideo, FaPlus } from "react-icons/fa";
+import dynamic from "next/dynamic";
 
 
 const WritePage = () => {
   const { status } = useSession();
   const router = useRouter();
+  const ReactQuill = dynamic (() => import("react-quill"), { ssr: false });
 
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
