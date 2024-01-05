@@ -8,7 +8,7 @@ const AdminUsers = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch(`https://ecoprintix.netlify.app/api/users`, {
+            const res = await fetch(`/api/users`, {
                 cache: "no-store",
             });
 
@@ -28,7 +28,7 @@ const AdminUsers = () => {
         const userId = user.id;
 
         try {
-          const response = await fetch(`https://ecoprintix.netlify.app/api/users/${email}`, {
+          const response = await fetch(`/api/users/${email}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

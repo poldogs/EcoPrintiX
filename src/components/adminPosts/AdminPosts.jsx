@@ -8,7 +8,7 @@ const AdminPosts = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch(`https://ecoprintix.netlify.app/api/adminPosts`, {
+            const res = await fetch(`/api/adminPosts`, {
                 cache: "no-store",
             });
 
@@ -25,7 +25,7 @@ const AdminPosts = () => {
 
     const handleDelete = async (slug) => {
         try {
-          const response = await fetch(`https://ecoprintix.netlify.app/api/adminPosts/${slug}`, {
+          const response = await fetch(`/api/adminPosts/${slug}`, {
             method: 'DELETE',
           });
       
