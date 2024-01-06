@@ -11,7 +11,7 @@ const MenuPosts = ({ withImage }) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await fetch("https://ecoprintix.netlify.app/api/posts/topViews", {
+        const res = await fetch("http://localhost:3000/api/posts/topViews", {
           cache: "no-store",
         });
 

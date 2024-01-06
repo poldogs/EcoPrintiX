@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import prisma from "@/utils/connect";
 import { getAuthSession } from "@/utils/auth";
 
-//https://ecoprintix.netlify.app/api/userTasks/1
+//http://localhost:3000/api/userTasks/1
 
 export const GET = async (req, { params }) => {
     const { id } = params;
