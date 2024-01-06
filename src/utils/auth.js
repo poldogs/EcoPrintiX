@@ -4,7 +4,7 @@ import GithubProvider from "next-auth/providers/github";
 import prisma from "./connect";
 import { getServerSession } from "next-auth";
 
-/*async function assignTasksToUser(userId) {
+async function assignTasksToUser(userId) {
   const allTasks = await prisma.task.findMany();
   for (const task of allTasks) {
     await prisma.userTask.create({
@@ -14,7 +14,7 @@ import { getServerSession } from "next-auth";
       },
     });
   }
-}*/
+}
 
 export const authOptions = {
   adapter: PrismaAdapter(prisma),

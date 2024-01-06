@@ -8,7 +8,7 @@ const AdminComments = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch(`/api/comments?all=true`, {
+            const res = await fetch(`/api/adminComments`, {
                 cache: "no-store",
             });
 
@@ -25,7 +25,7 @@ const AdminComments = () => {
 
     const handleDelete = async (id) => {
         try {
-          const response = await fetch(`/api/comments?all=true/${id}`, {
+          const response = await fetch(`/api/adminComments/${id}`, {
             method: 'DELETE',
           });
       

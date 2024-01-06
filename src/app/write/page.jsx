@@ -13,13 +13,13 @@ import {
 } from "firebase/storage";
 import { app } from "@/utils/firebase";
 import { FaImage, FaUpload, FaVideo, FaPlus } from "react-icons/fa";
-import dynamic from "next/dynamic";
-
+//import dynamic from "next/dynamic";
+import ReactQuill from "react-quill";
 
 const WritePage = () => {
   const { status } = useSession();
   const router = useRouter();
-  const ReactQuill = dynamic (() => import("react-quill"), { ssr: false });
+  //const ReactQuill = dynamic (() => import("react-quill"));
 
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
