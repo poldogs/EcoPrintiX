@@ -3,7 +3,7 @@ import styles from "./blogPage.module.css";
 import Menu from "@/components/menu/Menu";
 
 const BlogPage = ({ searchParams }) => {
-  /*const page = parseInt(searchParams.page) || 1;
+  const page = parseInt(searchParams.page) || 1;
   const { cat } = searchParams;
 
   return (
@@ -14,7 +14,7 @@ const BlogPage = ({ searchParams }) => {
         <Menu />
       </div>
     </div>
-  );*/
+  );
 };
 
 export default BlogPage;
