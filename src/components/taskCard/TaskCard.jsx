@@ -23,7 +23,7 @@ const TaskCard = ({ task, userTask }) => {
   const completeTask = async (id) => {
   if (status === 'authenticated') {
     try {
-      const res = await fetch(`http://localhost:3000/api/userTasks/${id}`, {
+      const res = await fetch(`https://ecoprintix.vercel.app/api/userTasks/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
