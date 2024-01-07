@@ -1,3 +1,4 @@
+'use client';
 import styles from "./adminUsers.module.css";
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
