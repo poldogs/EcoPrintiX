@@ -28,6 +28,7 @@ export const authOptions = {
       clientSecret: process.env.GITHUB_SECRET,
     })
   ],
+  secret: 'anysecret',
   events: {
     signIn: async (message) => {
       if (message.isNewUser) {
