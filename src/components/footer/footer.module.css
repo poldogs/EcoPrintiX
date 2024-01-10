@@ -37,8 +37,8 @@
 .links {
   flex: 1;
   display: flex;
-  justify-content: flex-end;
-  gap: 100px;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .list {
@@ -61,14 +61,10 @@
     gap: 50px;
   }
 }
-@media screen and (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    gap: 50px;
-  }
-
+@media screen and (min-width: 768px) {
   .links {
-    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 }
