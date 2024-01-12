@@ -11,7 +11,7 @@ const MenuPosts = ({ withImage }) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await fetch("https://ecoprintix.vercel.app/api/posts/topViews", {
+        const res = await fetch("/api/topViews", {
           cache: "no-store",
         });
 
@@ -32,7 +32,7 @@ const MenuPosts = ({ withImage }) => {
   return (
     <div className={styles.items}>
       {posts.map((post) => (
-        <Link href="/" className={`${styles.item}`} key={post.id}>
+        <Link href={`/posts/${post.slug}`} className={`${styles.item}`} key={post.id}>
           {withImage && (
             <div className={styles.imageContainer}>
               <Image src={post.img} alt="" fill className={styles.image} />
