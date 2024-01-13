@@ -1,47 +1,52 @@
+"use client";
+import React, { useState } from 'react';
 import styles from './adminPage.module.css';
 import AdminPosts from '../../components/adminPosts/AdminPosts';
 import AdminComments from '../../components/adminComments/AdminComments';
 import AdminUsers from '../../components/adminUsers/AdminUsers';
 
 const AdminPage = () => {
+  const [key, setKey] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const handleLogin = (event) => {
+  const handleKeyChange = (event) => {
+    setKey(event.target.value);
+  };
+
+  const handleLogin = async (event) => {
+    
     event.preventDefault();
-    const password = event.target.elements.password.value;
-    if (password === "admin") {
+    if (key === "admin") {
       try {
-          if (typeof window !== 'undefined') {
-            localStorage.setItem('isAuthenticated', 'true');
-            window.location.reload();
-          }
+          setIsAuthenticated(true);
       } catch (error) {
         console.error('Error fetching:', error);
       }
     }
   };
 
-  if (typeof window !== 'undefined' && localStorage.getItem('isAuthenticated')) {
-    return (
-      <div>
-        <AdminPosts/>
-        <AdminComments/>
-        <AdminUsers/>
-      </div>
-    );
-  }
 
   return (
     <div>
-        <form className={styles.loginForm} onSubmit={handleLogin}>
+      {!isAuthenticated ? (
+        <form className={styles.loginForm}>
           <input
             type="password"
-            name="password"
+            value={key}
+            onChange={handleKeyChange}
             className={styles.loginInput}
           />
-          <button type="submit" className={styles.loginButton}>
+          <button onClick={handleLogin} className={styles.loginButton}>
             Login
           </button>
         </form>
+      ) : (
+        <div>
+          <AdminPosts/>
+          <AdminComments/>
+          <AdminUsers/>
+        </div>
+      )}
     </div>
   );
 };
