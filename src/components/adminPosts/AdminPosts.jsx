@@ -1,42 +1,38 @@
 import styles from "./adminPosts.module.css";
-import { useState, useEffect } from 'react';
 
+const getData = async () => {
+  const res = await fetch(
+    `https://ecoprintix.vercel.app/api/adminPosts`,
+    {
+      cache: "no-store",
+    }
+  );
 
-const AdminPosts = ({posts, setPosts}) => {
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const res = await fetch(`/api/adminPosts`, {
-                cache: "no-store",
-            });
+  return res.json();
+};
 
-            if (!res.ok) {
-                throw new Error("Failed");
-            }
+const handleDelete = async (slug) => {
+  try {
+    const response = await fetch(`https://ecoprintix.vercel.app/api/adminPosts/${slug}`, {
+      method: 'DELETE',
+    });
 
-            const json = await res.json();
-            setPosts(json);
-        };
+    if (!response.ok) {
+      throw new Error('Error deleting post');
+    }
 
-        fetchData();
-    }, []);
+    getData();
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
 
-    const handleDelete = async (slug) => {
-        try {
-          const response = await fetch(`/api/adminPosts/${slug}`, {
-            method: 'DELETE',
-          });
-      
-          if (!response.ok) {
-            throw new Error('Error deleting post');
-          }
-      
-          setPosts(posts.filter((post) => post.slug !== slug));
-          fetchData();
-        } catch (error) {
-          console.error('Error:', error);
-        }
-      };
+const AdminPosts = () => {
+   getData();
       return (
         <div>
             <h2 className={styles.listTitle}>Posts List</h2>
