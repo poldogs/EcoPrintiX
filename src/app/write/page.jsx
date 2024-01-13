@@ -29,6 +29,8 @@ const WritePage = () => {
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
+  
+  const [uploadComplete, setUploadComplete] = useState(false);
 
   useEffect(() => {
     const storage = getStorage(app);
@@ -57,6 +59,7 @@ const WritePage = () => {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setMedia(downloadURL);
+            setUploadComplete(true);
           });
         }
       );
@@ -151,6 +154,7 @@ const WritePage = () => {
       <button className={styles.publish} onClick={handleSubmit}>
         Publish
       </button>
+      {uploadComplete && <p>Your image has been uploaded</p>}
     </div>
   );
 };
