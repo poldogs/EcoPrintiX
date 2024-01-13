@@ -31,8 +31,8 @@ const handleDelete = async (slug) => {
   }
 };
 
-const AdminPosts = () => {
-   getData();
+const AdminPosts = async() => {
+  const { posts } = await getData();
       return (
         <div>
             <h2 className={styles.listTitle}>Posts List</h2>
