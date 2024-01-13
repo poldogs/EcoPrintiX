@@ -19,8 +19,7 @@ const MenuPosts = ({ withImage }) => {
           throw new Error("Failed");
         }
 
-        const data = await res.json();
-        setPosts(data);
+        return res.json();
       } catch (error) {
         console.error(error);
       }

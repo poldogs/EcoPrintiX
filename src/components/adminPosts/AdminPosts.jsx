@@ -17,8 +17,7 @@ const AdminPosts = () => {
                 throw new Error("Failed");
             }
 
-            const json = await res.json();
-            setPosts(json);
+            return res.json();
         };
 
         fetchData();

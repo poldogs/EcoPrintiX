@@ -17,8 +17,7 @@ const AdminComments = () => {
                 throw new Error("Failed");
             }
 
-            const json = await res.json();
-            setComments(json);
+            return res.json();
         };
 
         fetchData();

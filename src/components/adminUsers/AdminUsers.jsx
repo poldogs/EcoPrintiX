@@ -17,8 +17,7 @@ const AdminUsers = () => {
                 throw new Error("Failed");
             }
 
-            const json = await res.json();
-            setUsers(json);
+            return res.json();
         };
 
         fetchData();
