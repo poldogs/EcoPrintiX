@@ -9,7 +9,7 @@ const AdminComments = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch(`/api/adminComments`, {
+            const res = await fetch(`https://ecoprintix.vercel.app/api/adminComments`, {
                 cache: "no-store",
             });
 
@@ -26,7 +26,7 @@ const AdminComments = () => {
 
     const handleDelete = async (id) => {
         try {
-          const response = await fetch(`/api/adminComments/${id}`, {
+          const response = await fetch(`https://ecoprintix.vercel.app/api/adminComments/${id}`, {
             method: 'DELETE',
           });
       

@@ -11,7 +11,7 @@ const MenuPosts = ({ withImage }) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await fetch("/api/topViews", {
+        const res = await fetch("https://ecoprintix.vercel.app/api/topViews", {
           cache: "no-store",
         });
 
