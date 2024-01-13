@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './adminPage.module.css';
 import AdminPosts from '../../components/adminPosts/AdminPosts';
 import AdminComments from '../../components/adminComments/AdminComments';
