@@ -1,4 +1,3 @@
-'use client';
 import styles from "./adminPosts.module.css";
 import { useState, useEffect } from 'react';
 
@@ -9,7 +8,7 @@ const AdminPosts = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch(`https://ecoprintix.vercel.app/api/adminPosts`, {
+            const res = await fetch(`/api/adminPosts`, {
                 cache: "no-store",
             });
 
@@ -26,7 +25,7 @@ const AdminPosts = () => {
 
     const handleDelete = async (slug) => {
         try {
-          const response = await fetch(`https://ecoprintix.vercel.app/api/adminPosts/${slug}`, {
+          const response = await fetch(`/api/adminPosts/${slug}`, {
             method: 'DELETE',
           });
       

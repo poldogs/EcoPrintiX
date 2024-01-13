@@ -1,4 +1,3 @@
-'use client';
 import styles from "./adminComments.module.css";
 import { useState, useEffect } from 'react';
 
@@ -8,7 +7,7 @@ const AdminComments = () => {
     const [comments, setComments] = useState([]);
     
     const fetchData = async () => {
-      const res = await fetch(`https://ecoprintix.vercel.app/api/adminComments`, {
+      const res = await fetch(`/api/adminComments`, {
         cache: "no-store",
       });
 
@@ -26,7 +25,7 @@ const AdminComments = () => {
 
     const handleDelete = async (id) => {
         try {
-          const response = await fetch(`https://ecoprintix.vercel.app/api/adminComments/${id}`, {
+          const response = await fetch(`/api/adminComments/${id}`, {
             method: 'DELETE',
             headers: {
               'Cache-Control': 'no-cache',
