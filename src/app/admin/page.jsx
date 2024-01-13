@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import styles from './adminPage.module.css';
 import AdminPosts from '../../components/adminPosts/AdminPosts';
 import AdminComments from '../../components/adminComments/AdminComments';
