@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import styles from './adminPage.module.css';
 import AdminPosts from '../../components/adminPosts/AdminPosts';
@@ -7,28 +7,39 @@ import AdminUsers from '../../components/adminUsers/AdminUsers';
 
 const AdminPage = () => {
   const router = useRouter();
-  const passwordRef = useRef();
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    if (passwordRef.current.value === "admin") {
+    const password = event.target.elements.password.value;
+    if (password === "admin") {
       try {
-          router.push('/admin/dashboard');
+          localStorage.setItem('isAuthenticated', 'true');
+          router.push('/admin');
       } catch (error) {
         console.error('Error fetching:', error);
       }
     }
   };
 
+  if (localStorage.getItem('isAuthenticated')) {
+    return (
+      <div>
+        <AdminPosts/>
+        <AdminComments/>
+        <AdminUsers/>
+      </div>
+    );
+  }
+
   return (
     <div>
-        <form className={styles.loginForm}>
+        <form className={styles.loginForm} onSubmit={handleLogin}>
           <input
             type="password"
-            ref={passwordRef}
+            name="password"
             className={styles.loginInput}
           />
-          <button onClick={handleLogin} className={styles.loginButton}>
+          <button type="submit" className={styles.loginButton}>
             Login
           </button>
         </form>
