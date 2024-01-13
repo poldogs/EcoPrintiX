@@ -16,7 +16,7 @@ const AdminPage = () => {
   const handleLogin = async (event) => {
     
     event.preventDefault();
-    if (key === process.env.ADMIN_KEY) {
+    if (key === "admin") {
       try {
           setIsAuthenticated(true);
       } catch (error) {
