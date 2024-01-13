@@ -118,6 +118,7 @@ const WritePage = () => {
         <option value="water">water</option>
         <option value="others">others</option>
       </select>
+      {uploadComplete && <p>Your image has been uploaded</p>}
       <div className={styles.editor}>
         <button className={styles.button} onClick={() => setOpen(!open)}>
           <FaPlus />
@@ -154,7 +155,6 @@ const WritePage = () => {
       <button className={styles.publish} onClick={handleSubmit}>
         Publish
       </button>
-      {uploadComplete && <p>Your image has been uploaded</p>}
     </div>
   );
 };

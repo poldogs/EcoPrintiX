@@ -35,6 +35,7 @@ const AdminPosts = () => {
           }
       
           setPosts(posts.filter((post) => post.slug !== slug));
+          fetchData();
         } catch (error) {
           console.error('Error:', error);
         }

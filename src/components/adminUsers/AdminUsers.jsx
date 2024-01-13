@@ -42,6 +42,7 @@ const AdminUsers = () => {
           }
       
           setUsers(users.filter((user) => user.email !== email));
+          fetchData();
         } catch (error) {
           console.error('Error:', error);
         }

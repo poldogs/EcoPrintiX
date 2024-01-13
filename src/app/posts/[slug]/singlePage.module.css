@@ -80,8 +80,7 @@
 }
 @media screen and (max-width: 1024px) {
   .imageContainer {
-    width: 80%;
-    height: auto;
+    display: none;
   }
 }
 @media screen and (max-width: 640px) {
