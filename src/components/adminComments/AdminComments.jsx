@@ -6,21 +6,22 @@ import { useState, useEffect } from 'react';
 const AdminComments = () => {
 
     const [comments, setComments] = useState([]);
+    
+    const fetchData = async () => {
+      const res = await fetch(`https://ecoprintix.vercel.app/api/adminComments`, {
+        cache: "no-store",
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed");
+      }
+
+      const json = await res.json();
+      setComments(json);
+    };
 
     useEffect(() => {
-        const fetchData = async () => {
-            const res = await fetch(`https://ecoprintix.vercel.app/api/adminComments`, {
-                cache: "no-store",
-            });
-
-            if (!res.ok) {
-                throw new Error("Failed");
-            }
-
-            return res.json();
-        };
-
-        fetchData();
+      fetchData();
     }, []);
 
     const handleDelete = async (id) => {
