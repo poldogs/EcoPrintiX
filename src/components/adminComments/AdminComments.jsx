@@ -1,10 +1,18 @@
-import useSWR from 'swr';
+import { useState, useEffect } from 'react';
 import styles from "./adminComments.module.css";
 
-const fetcher = url => fetch(url).then(res => res.json());
-
 const AdminComments = () => {
-  const { data: comments, mutate } = useSWR('https://ecoprintix.vercel.app/api/adminComments', fetcher);
+  const [comments, setComments] = useState([]);
+
+  const fetchData = async () => {
+    const res = await fetch('https://ecoprintix.vercel.app/api/adminComments');
+    const data = await res.json();
+    setComments(data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleDelete = async (id) => {
     try {
@@ -16,7 +24,7 @@ const AdminComments = () => {
         throw new Error('Error deleting comment');
       }
 
-      mutate();
+      fetchData();
     } catch (error) {
       console.error('Error:', error);
     }
