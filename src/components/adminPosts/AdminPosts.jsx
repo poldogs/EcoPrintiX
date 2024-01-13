@@ -1,4 +1,6 @@
 import styles from "./adminPosts.module.css";
+import React from "react";
+
 
 const getData = async () => {
   const res = await fetch(
