@@ -2,9 +2,7 @@ import styles from "./adminPosts.module.css";
 import { useState, useEffect } from 'react';
 
 
-const AdminPosts = () => {
-
-    const [posts, setPosts] = useState([]);
+const AdminPosts = ({posts, setPosts}) => {
 
     useEffect(() => {
         const fetchData = async () => {

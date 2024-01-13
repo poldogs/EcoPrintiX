@@ -8,6 +8,7 @@ import AdminUsers from '../../components/adminUsers/AdminUsers';
 const AdminPage = () => {
   const [key, setKey] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [posts, setPosts] = useState([]);
 
   const handleKeyChange = (event) => {
     setKey(event.target.value);
@@ -25,6 +26,22 @@ const AdminPage = () => {
     }
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`/api/adminPosts`, {
+        cache: "no-store",
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed");
+      }
+
+      const json = await res.json();
+      setPosts(json);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div>
@@ -42,7 +59,7 @@ const AdminPage = () => {
         </form>
       ) : (
         <div>
-          <AdminPosts/>
+          <AdminPosts posts={posts} setPosts={setPosts}/>
           <AdminComments/>
           <AdminUsers/>
         </div>
