@@ -1,4 +1,3 @@
-"use server";
 import styles from "./adminPosts.module.css";
 import React from "react";
 
