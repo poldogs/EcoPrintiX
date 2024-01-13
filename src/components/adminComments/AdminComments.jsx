@@ -1,3 +1,4 @@
+"use client";
 import styles from "./adminComments.module.css";
 import { useState, useEffect } from 'react';
 
