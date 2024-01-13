@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './adminPage.module.css';
 import AdminPosts from '../../components/adminPosts/AdminPosts';
 import AdminComments from '../../components/adminComments/AdminComments';
@@ -6,20 +5,22 @@ import AdminUsers from '../../components/adminUsers/AdminUsers';
 
 const AdminPage = () => {
 
-  const handleLogin = async (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
     const password = event.target.elements.password.value;
     if (password === "admin") {
       try {
-          localStorage.setItem('isAuthenticated', 'true');
-          window.location.reload();
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('isAuthenticated', 'true');
+            window.location.reload();
+          }
       } catch (error) {
         console.error('Error fetching:', error);
       }
     }
   };
 
-  if (localStorage.getItem('isAuthenticated')) {
+  if (typeof window !== 'undefined' && localStorage.getItem('isAuthenticated')) {
     return (
       <div>
         <AdminPosts/>
