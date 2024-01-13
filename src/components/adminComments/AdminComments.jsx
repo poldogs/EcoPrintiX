@@ -38,7 +38,6 @@ const AdminComments = () => {
           }
       
           setComments(comments.filter((comment) => comment.id !== id));
-          fetchData();
         } catch (error) {
           console.error('Error:', error);
         }
