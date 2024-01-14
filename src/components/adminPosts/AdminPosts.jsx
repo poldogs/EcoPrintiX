@@ -1,20 +1,34 @@
+"use client";
 import styles from "./adminPosts.module.css";
 import React from 'react'
+import { useState, useEffect } from "react";
 
-const fetchData = async () => {
-    const res = await fetch(`https://ecoprintix.vercel.app/api/adminPosts`, {
-      cache: "no-store",
-    });
 
-    if (!res.ok) {
-      throw new Error("Failed");
-    }
+const AdminPosts = () => {
 
-    return res.json();
-};
+    const [posts, setPosts] = useState([]);
 
-const AdminPosts = async () => {
-  const { posts } = fetchData();
+    const fetchData = async () => {
+      try {
+        const res = await fetch("https://ecoprintix.vercel.app/api/adminPosts", {
+          cache: "no-store",
+        });
+
+        if (!res.ok) {
+          throw new Error("Failed");
+        }
+
+        const data = await res.json();
+        setPosts(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    useEffect(() => {  
+      fetchData();
+      
+    }, []);
 
     const handleDelete = async (slug) => {
         try {
@@ -25,9 +39,9 @@ const AdminPosts = async () => {
           if (!response.ok) {
             throw new Error('Error deleting post');
           }
-
-          fetchData();
-                
+      
+          setPosts((currentPosts) => currentPosts.filter((post) => post.slug !== slug));
+          
         } catch (error) {
           console.error('Error:', error);
         }
@@ -35,7 +49,7 @@ const AdminPosts = async () => {
       return (
         <div>
             <h2 className={styles.listTitle}>Posts List</h2>
-          {posts?.map((post) => (
+          {posts.map((post) => (
             <div key={post.id} className={styles.post}>
               <h2 className={styles.postTitle}>{post.title}</h2>
               <div

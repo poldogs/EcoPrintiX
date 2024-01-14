@@ -8,7 +8,7 @@ const getData = async () => {
   const res = await fetch(
     `https://ecoprintix.vercel.app/api/posts/topViews`,
     {
-      cache: "no-store",
+      cache: "default",
     }
   );
 
