@@ -1,14 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { useRouter } from 'next/router';
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./menuPosts.module.css";
 
 const getData = async () => {
   const res = await fetch(
-    `https://ecoprintix.vercel.app/api/posts/topViews`,
+    `https://ecoprintix.vercel.app/api/posts?topViews`,
     {
-      cache: "default",
+      cache: "no-store",
     }
   );
 
@@ -20,16 +21,19 @@ const getData = async () => {
 };
 
 const MenuPosts = ({ withImage }) => {
+  const router = useRouter();
   const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const data = await getData();
-      setPosts(data);
-    };
+  const fetchPosts = async () => {
+    const data = await getData();
+    setPosts(data);
+  };
 
-    fetchPosts();
-  }, []);
+  useEffect(() => {
+    if (router.pathname === '/blog') {
+      fetchPosts();
+    }
+  }, [router.pathname]);
 
   return (
     <div className={styles.items}>
