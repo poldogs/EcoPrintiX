@@ -1,44 +1,52 @@
 import styles from "./adminPosts.module.css";
-import React from "react";
+import React,{ useState, useEffect } from 'react'
 
-
-const getData = async () => {
-  const res = await fetch(
-    `https://ecoprintix.vercel.app/api/adminPosts`,
-    {
-      cache: "no-store",
-    }
-  );
-
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
-
-  return res.json();
-};
-
-const handleDelete = async (slug) => {
-  try {
-    const response = await fetch(`https://ecoprintix.vercel.app/api/adminPosts/${slug}`, {
-      method: 'DELETE',
-    });
-
-    if (!response.ok) {
-      throw new Error('Error deleting post');
-    }
-
-    getData();
-  } catch (error) {
-    console.error('Error:', error);
-  }
-};
 
 const AdminPosts = () => {
-  const { posts } = getData();
+
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const res = await fetch("https://ecoprintix.vercel.app/api/adminPosts", {
+            cache: "no-store",
+          });
+  
+          if (!res.ok) {
+            throw new Error("Failed");
+          }
+  
+          const data = await res.json();
+          setPosts(data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+  
+      fetchData();
+    }, []);
+
+    const handleDelete = async (slug) => {
+        try {
+          const response = await fetch(`https://ecoprintix.vercel.app/api/adminPosts/${slug}`, {
+            method: 'DELETE',
+          });
+      
+          if (!response.ok) {
+            throw new Error('Error deleting post');
+          }
+      
+          setPosts(posts.filter((post) => post.slug !== slug));
+          fetchData();
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
       return (
         <div>
             <h2 className={styles.listTitle}>Posts List</h2>
-          {posts?.map((post) => (
+          {posts.map((post) => (
             <div key={post.id} className={styles.post}>
               <h2 className={styles.postTitle}>{post.title}</h2>
               <div
