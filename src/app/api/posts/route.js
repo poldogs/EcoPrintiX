@@ -7,8 +7,19 @@ export const GET = async (req) => {
 
   const page = searchParams.get("page");
   const cat = searchParams.get("cat");
-  
-  if (searchParams.has("topViews")) {
+
+  if (searchParams.has("all")) {
+    try {
+      const posts = await prisma.post.findMany({});
+
+      return new NextResponse(JSON.stringify(posts), { status: 200 });
+    } catch (err) {
+      console.log(err);
+      return new NextResponse(
+        JSON.stringify({ message: "Something went wrong!" }), { status: 500 }
+      );
+    }
+  } else if (searchParams.has("topViews")) {
     try {
       const posts = await prisma.post.findMany({
         take: 4,
