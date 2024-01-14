@@ -7,9 +7,8 @@ export const GET = async (req) => {
 
   const page = searchParams.get("page");
   const cat = searchParams.get("cat");
-  const topViews = searchParams.has("topViews");
-
-  if (topViews) {
+  
+  if (searchParams.has("topViews")) {
     try {
       const posts = await prisma.post.findMany({
         take: 4,
