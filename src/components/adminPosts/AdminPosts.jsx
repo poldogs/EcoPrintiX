@@ -1,33 +1,24 @@
-import { fetchData } from "next-auth/client/_utils";
 import styles from "./adminPosts.module.css";
-import React,{ useState, useEffect } from 'react'
+import React from 'react'
 
+const fetchData = async () => {
+  try {
+    const res = await fetch("https://ecoprintix.vercel.app/api/adminPosts", {
+      cache: "no-store",
+    });
 
-const AdminPosts = () => {
+    if (!res.ok) {
+      throw new Error("Failed");
+    }
 
-    const [posts, setPosts] = useState([]);
+    await res.json();
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-    const fetchData = async () => {
-      try {
-        const res = await fetch("https://ecoprintix.vercel.app/api/adminPosts", {
-          cache: "no-store",
-        });
-
-        if (!res.ok) {
-          throw new Error("Failed");
-        }
-
-        const data = await res.json();
-        setPosts(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    useEffect(() => {  
-      fetchData();
-      
-    }, []);
+const AdminPosts = async () => {
+  const { posts } = await fetchData();
 
     const handleDelete = async (slug) => {
         try {
@@ -38,9 +29,9 @@ const AdminPosts = () => {
           if (!response.ok) {
             throw new Error('Error deleting post');
           }
-      
-          setPosts((currentPosts) => currentPosts.filter((post) => post.slug !== slug));
-          
+
+          fetchData();
+                
         } catch (error) {
           console.error('Error:', error);
         }
