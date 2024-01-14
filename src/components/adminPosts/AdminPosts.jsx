@@ -10,7 +10,7 @@ const AdminPosts = () => {
 
     const fetchData = async () => {
       try {
-        const res = await fetch("https://ecoprintix.vercel.app/api/adminPosts", {
+        const res = await fetch("https://ecoprintix.vercel.app/api/posts?all", {
           cache: "no-store",
         });
 
@@ -32,7 +32,7 @@ const AdminPosts = () => {
 
     const handleDelete = async (slug) => {
         try {
-          const response = await fetch(`https://ecoprintix.vercel.app/api/adminPosts/${slug}`, {
+          const response = await fetch(`https://ecoprintix.vercel.app/api/posts/${slug}`, {
             method: 'DELETE',
           });
       
