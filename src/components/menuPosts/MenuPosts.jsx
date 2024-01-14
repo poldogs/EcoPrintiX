@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./menuPosts.module.css";
@@ -21,19 +20,16 @@ const getData = async () => {
 };
 
 const MenuPosts = ({ withImage }) => {
-  const router = useRouter();
   const [posts, setPosts] = useState([]);
 
-  const fetchPosts = async () => {
-    const data = await getData();
-    setPosts(data);
-  };
-
   useEffect(() => {
-    if (router.pathname === '/blog') {
-      fetchPosts();
-    }
-  }, [router.pathname]);
+    const fetchPosts = async () => {
+      const data = await getData();
+      setPosts(data);
+    };
+
+    fetchPosts();
+  }, []);
 
   return (
     <div className={styles.items}>
