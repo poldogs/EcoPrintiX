@@ -1,26 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./menuPosts.module.css";
 
 const getData = async () => {
-    const res = await fetch(
-      `https://ecoprintix.vercel.app/api/posts/topViews`,
-      {
-        cache: "no-store",
-      }
-    );
-  
-    if (!res.ok) {
-      throw new Error("Failed");
+  const res = await fetch(
+    `https://ecoprintix.vercel.app/api/posts/topViews`,
+    {
+      cache: "no-store",
     }
-  
-    return res.json();
-  };
+  );
 
-const MenuPosts = async ({ withImage }) => {
-  
-  const { posts } = await getData();
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
+
+  return res.json();
+};
+
+const MenuPosts = ({ withImage }) => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const data = await getData();
+      setPosts(data);
+    };
+
+    fetchPosts();
+  }, []);
 
   return (
     <div className={styles.items}>
