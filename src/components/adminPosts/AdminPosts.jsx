@@ -26,6 +26,9 @@ const AdminPosts = () => {
 
     useEffect(() => {  
       fetchData();
+      const intervalId = setInterval(fetchData, 5000);
+
+      return () => clearInterval(intervalId);
     }, []);
 
     const handleDelete = async (slug) => {
