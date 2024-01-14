@@ -39,7 +39,7 @@ const AdminPosts = async () => {
       return (
         <div>
             <h2 className={styles.listTitle}>Posts List</h2>
-          {posts.map((post) => (
+          {posts?.map((post) => (
             <div key={post.id} className={styles.post}>
               <h2 className={styles.postTitle}>{post.title}</h2>
               <div
