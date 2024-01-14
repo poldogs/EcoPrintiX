@@ -7,7 +7,7 @@ export const GET = async (req) => {
 
   const page = searchParams.get("page");
   const cat = searchParams.get("cat");
-  const topViews = searchParams.get("topViews");
+  const topViews = searchParams.has("topViews");
 
   if (topViews) {
     try {
