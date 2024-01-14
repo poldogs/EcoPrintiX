@@ -15,7 +15,7 @@ const AdminPage = () => {
 
   const handleKeyChange = (event) => {
     setKey(event.target.value);
-    if (event.target.value === 'admin') {
+    if (event.target.value === process.env.ADMIN_KEY) {
       setIsAdmin(true);
     }
   };
