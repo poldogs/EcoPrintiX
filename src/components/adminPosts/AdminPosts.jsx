@@ -38,7 +38,7 @@ const AdminPosts = () => {
             throw new Error('Error deleting post');
           }
       
-          fetchData();
+          setPosts((currentPosts) => currentPosts.filter((post) => post.slug !== slug));
           
         } catch (error) {
           console.error('Error:', error);
