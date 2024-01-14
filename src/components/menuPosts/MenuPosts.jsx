@@ -4,11 +4,11 @@ import Link from "next/link";
 import styles from "./menuPosts.module.css";
 
 
-const MenuPosts = ({ withImage }) => {
+const MenuPosts = async ({ withImage }) => {
 
   const getData = async () => {
     const res = await fetch(
-      `https://ecoprintix.vercel.app/api/topViews`,
+      `https://ecoprintix.vercel.app/api/posts?topViews=true`,
       {
         cache: "no-store",
       }
@@ -21,11 +21,11 @@ const MenuPosts = ({ withImage }) => {
     return res.json();
   };
   
-  const { posts } = getData();
+  const { posts } = await getData();
 
   return (
     <div className={styles.items}>
-      {posts.map((post) => (
+      {posts?.map((post) => (
         <Link href={`/posts/${post.slug}`} className={`${styles.item}`} key={post.id}>
           {withImage && (
             <div className={styles.imageContainer}>
