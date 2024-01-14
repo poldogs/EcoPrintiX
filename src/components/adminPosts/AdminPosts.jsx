@@ -2,7 +2,6 @@ import styles from "./adminPosts.module.css";
 import React from 'react'
 
 const fetchData = async () => {
-  try {
     const res = await fetch("https://ecoprintix.vercel.app/api/adminPosts", {
       cache: "no-store",
     });
@@ -11,10 +10,7 @@ const fetchData = async () => {
       throw new Error("Failed");
     }
 
-    await res.json();
-  } catch (error) {
-    console.error(error);
-  }
+    return res.json();
 };
 
 const AdminPosts = async () => {
