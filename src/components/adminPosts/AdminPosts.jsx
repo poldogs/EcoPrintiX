@@ -2,7 +2,7 @@ import styles from "./adminPosts.module.css";
 import React from 'react'
 
 const fetchData = async () => {
-    const res = await fetch("https://ecoprintix.vercel.app/api/adminPosts", {
+    const res = await fetch(`https://ecoprintix.vercel.app/api/adminPosts`, {
       cache: "no-store",
     });
 
@@ -14,7 +14,7 @@ const fetchData = async () => {
 };
 
 const AdminPosts = async () => {
-  const { posts } = await fetchData();
+  const { posts } = fetchData();
 
     const handleDelete = async (slug) => {
         try {

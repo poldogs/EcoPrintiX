@@ -1,33 +1,27 @@
-"use client"
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./menuPosts.module.css";
 
 
 const MenuPosts = ({ withImage }) => {
-  const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const res = await fetch("https://ecoprintix.vercel.app/api/topViews", {
-          cache: "no-store",
-        });
-
-        if (!res.ok) {
-          throw new Error("Failed");
-        }
-
-        const data = await res.json();
-        setPosts(data);
-      } catch (error) {
-        console.error(error);
+  const getData = async () => {
+    const res = await fetch(
+      `https://ecoprintix.vercel.app/api/topViews`,
+      {
+        cache: "no-store",
       }
-    };
-
-    getData();
-  }, []);
+    );
+  
+    if (!res.ok) {
+      throw new Error("Failed");
+    }
+  
+    return res.json();
+  };
+  
+  const { posts } = getData();
 
   return (
     <div className={styles.items}>
