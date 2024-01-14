@@ -1,4 +1,3 @@
-"use client";
 import styles from "./adminUsers.module.css";
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -9,7 +8,7 @@ const AdminUsers = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch(`/api/adminUsers`, {
+            const res = await fetch(`/api/users`, {
                 cache: "no-store",
             });
 
@@ -29,7 +28,7 @@ const AdminUsers = () => {
         const userId = user.id;
 
         try {
-          const response = await fetch(`/api/adminUsers/${email}`, {
+          const response = await fetch(`/api/users/${email}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
