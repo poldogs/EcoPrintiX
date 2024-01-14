@@ -25,7 +25,7 @@ const AdminPosts = () => {
       };
   
       fetchData();
-    }, []);
+    }, [posts]);
 
     const handleDelete = async (slug) => {
         try {
