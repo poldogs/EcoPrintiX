@@ -5,7 +5,7 @@ import styles from "./menuPosts.module.css";
 
 const getData = async () => {
     const res = await fetch(
-      `https://ecoprintix.vercel.app/api/posts?topViews`,
+      `https://ecoprintix.vercel.app/api/posts/topViews`,
       {
         cache: "no-store",
       }
@@ -17,12 +17,10 @@ const getData = async () => {
   
     return res.json();
   };
-  
-const MenuPosts = async ({ withImage }) => {
 
+const MenuPosts = async ({ withImage }) => {
   
-  
-  const { posts } = getData();
+  const { posts } = await getData();
 
   return (
     <div className={styles.items}>
