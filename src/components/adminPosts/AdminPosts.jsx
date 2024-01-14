@@ -24,7 +24,6 @@ const AdminPosts = () => {
         }
       };
   
-      fetchData();
     }, []);
 
     const handleDelete = async (slug) => {
@@ -38,7 +37,6 @@ const AdminPosts = () => {
           }
       
           setPosts(posts.filter((post) => post.slug !== slug));
-          fetchData();
         } catch (error) {
           console.error('Error:', error);
         }
