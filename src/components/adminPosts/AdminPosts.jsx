@@ -31,7 +31,7 @@ const AdminPosts = () => {
 
     const handleDelete = async (slug) => {
         try {
-          const response = await fetch(`/api/posts/${slug}`, {
+          const response = await fetch(`/api/posts?all/${slug}`, {
             method: 'DELETE',
           });
       
