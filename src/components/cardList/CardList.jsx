@@ -6,7 +6,7 @@ import Card from "../card/Card";
 
 const getData = async (page, cat) => {
   const res = await fetch(
-    `https://ecoprintix.vercel.app/api/posts?page=${page}&cat=${cat || ""}?topViews`,
+    `https://ecoprintix.vercel.app/api/posts?page=${page}&cat=${cat || ""}`,
     {
       cache: "no-store",
     }
