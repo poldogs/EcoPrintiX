@@ -5,7 +5,7 @@ import Menu from "@/components/menu/Menu";
 const BlogPage = ({ searchParams }) => {
   const page = parseInt(searchParams.page) || 1;
   const cat = searchParams.get("cat").replace("?TopViews", "");
-
+  
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>{cat} Blog</h1>
