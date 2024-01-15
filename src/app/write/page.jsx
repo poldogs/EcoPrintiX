@@ -85,6 +85,12 @@ const WritePage = () => {
       .replace(/^-+|-+$/g, "");
 
   const handleSubmit = async () => {
+
+    if (title.trim() === "") {
+      alert("Title is required");
+      return;
+    }
+    
     const res = await fetch("/api/posts", {
       method: "POST",
       body: JSON.stringify({
