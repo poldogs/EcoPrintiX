@@ -29,16 +29,16 @@ const Footer = () => {
         <div className={styles.list}>
           <span className={styles.listTitle}>Links</span>
           <Link href="/">Homepage</Link>
-          <Link href="/blog?topViews">Blog</Link>
+          <Link href="/blog">Blog</Link>
         </div>
         <div className={styles.list}>
           <span className={styles.listTitle}>Tags</span>
-          <Link href="/blog?cat=transportation?topViews">Transportation</Link>
-          <Link href="/blog?cat=recycling?topViews">Recycling</Link>
-          <Link href="/blog?cat=food?topViews">Food</Link>
-          <Link href="/blog?cat=energy?topViews">Energy used</Link>
-          <Link href="/blog?cat=water?topViews">Water</Link>
-          <Link href="/blog?cat=others?topViews">Others</Link>
+          <Link href="/blog?cat=transportation">Transportation</Link>
+          <Link href="/blog?cat=recycling">Recycling</Link>
+          <Link href="/blog?cat=food">Food</Link>
+          <Link href="/blog?cat=energy">Energy used</Link>
+          <Link href="/blog?cat=water">Water</Link>
+          <Link href="/blog?cat=others">Others</Link>
         </div>
         <div className={styles.list}>
           <span className={styles.listTitle}>Social</span>
