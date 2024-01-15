@@ -28,7 +28,7 @@ const WritePage = () => {
   const [media, setMedia] = useState("");
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
-  const [catSlug, setCatSlug] = useState("");
+  const [catSlug, setCatSlug] = useState("others");
   
   const [uploadComplete, setUploadComplete] = useState(false);
 
