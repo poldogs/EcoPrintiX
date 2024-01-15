@@ -36,7 +36,7 @@ export const GET = async (req) => {
         JSON.stringify({ message: "Something went wrong!" }), { status: 500 }
       );
     }
-  } 
+  } else {
   
     const POST_PER_PAGE = 2;
 
@@ -60,7 +60,8 @@ export const GET = async (req) => {
         JSON.stringify({ message: "Something went wrong!" }), { status: 500 }
       );
     }
-  };
+  }
+};
 
 
 
